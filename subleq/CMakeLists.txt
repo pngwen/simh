@@ -1,4 +1,4 @@
-## sigma simulator
+## subleq simulator
 ##
 ## This is an automagically generated file. Do NOT EDIT.
 ## Any changes you make will be overwritten!!
@@ -14,27 +14,12 @@ if (HAVE_UNITY_FRAMEWORK AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/unit-tests/CMak
   add_subdirectory(unit-tests)
 endif ()
 
-add_simulator(sigma
+add_simulator(subleq
     SOURCES
-        sigma_cpu.c
-        sigma_sys.c
-        sigma_cis.c
-        sigma_coc.c
-        sigma_dk.c
-        sigma_dp.c
-        sigma_fp.c
-        sigma_io.c
-        sigma_lp.c
-        sigma_map.c
-        sigma_mt.c
-        sigma_pt.c
-        sigma_rad.c
-        sigma_rtc.c
-        sigma_tt.c
-        sigma_cr.c
-        sigma_cp.c
+        subleq_sys.c
+        subleq_cpu.c
     INCLUDES
         ${CMAKE_CURRENT_SOURCE_DIR}
-    LABEL sigma
-    PKG_FAMILY sds_family
-    TEST sigma)
+    LABEL subleq
+    PKG_FAMILY default_family
+    TEST subleq)

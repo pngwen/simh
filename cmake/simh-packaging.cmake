@@ -31,7 +31,7 @@ cpack_add_component(decpdp_family
 cpack_add_component(default_family
     DISPLAY_NAME "Default SIMH simulator family."
     DESCRIPTION "The SIMH simulator collection of historical processors and computing systems that do not belong to
-any other simulated system family. Simulators: altair, besm6, ssem, tt2500, tx-0"
+any other simulated system family. Simulators: altair, besm6, ssem, subleq, tt2500, tx-0"
 )
 cpack_add_component(dgnova_family
     DISPLAY_NAME "DG Nova and Eclipse"

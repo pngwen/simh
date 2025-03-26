@@ -1720,6 +1720,10 @@ STUBD = ${SIMHD}/stub
 STUB = ${STUBD}/stub_sys.c ${STUBD}/stub_cpu.c
 STUB_OPT = -I ${STUBD}
 
+SUBLEQD = ${SIMHD}/subleq
+SUBLEQ = ${SUBLEQD}/subleq_sys.c ${SUBLEQD}/subleq_cpu.c
+SUBLEQ_OPT = -I ${SUBLEQD}
+
 
 TT2500D = ${SIMHD}/tt2500
 TT2500 = ${TT2500D}/tt2500_sys.c ${TT2500D}/tt2500_cpu.c \
@@ -2148,7 +2152,7 @@ SIGMA = ${SIGMAD}/sigma_cpu.c ${SIGMAD}/sigma_sys.c ${SIGMAD}/sigma_cis.c \
 	${SIGMAD}/sigma_fp.c ${SIGMAD}/sigma_io.c ${SIGMAD}/sigma_lp.c \
 	${SIGMAD}/sigma_map.c ${SIGMAD}/sigma_mt.c ${SIGMAD}/sigma_pt.c \
 	${SIGMAD}/sigma_rad.c ${SIGMAD}/sigma_rtc.c ${SIGMAD}/sigma_tt.c \
-	${SIGMAD}/sigma_cr.c ${SIGMAD}/sigma_cp.c 
+	${SIGMAD}/sigma_cr.c ${SIGMAD}/sigma_cp.c
 SIGMA_OPT = -I ${SIGMAD}
 
 SEL32D = ${SIMHD}/SEL32
@@ -2218,7 +2222,7 @@ ALL = pdp1 pdp4 pdp7 pdp8 pdp9 pdp15 pdp11 pdp10 \
 
 all : ${ALL}
 
-EXPERIMENTAL = alpha pdq3 sage
+EXPERIMENTAL = alpha pdq3 sage subleq
 
 experimental : ${EXPERIMENTAL}
 
@@ -2729,6 +2733,15 @@ ${BIN}sds${EXE} : ${SDS} ${SIM}
 	${CC} ${SDS} ${SIM} ${SDS_OPT} ${CC_OUTSPEC} ${LDFLAGS}
 ifneq (,$(call find_test,${SDSD},sds))
 	$@ $(call find_test,${SDSD},sds) ${TEST_ARG}
+endif
+
+subleq: ${BIN}subleq${EXE}
+
+${BIN}subleq${EXE} : ${SUBLEQ} ${SIM}
+	${MKDIRBIN}
+	${CC} ${SUBLEQ} ${SIM} ${SUBLEQ_OPT} ${CC_OUTSPEC} ${LDFLAGS}
+ifneq (,$(call find_test,${SUBLEQD},subleq))
+	$@ $(call find_test,${SUBLEQD},subleq) ${TEST_ARG}
 endif
 
 swtp6800mp-a : ${BIN}swtp6800mp-a${EXE}
